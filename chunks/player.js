@@ -114,9 +114,9 @@ var Player = function Player(_ref) {
   }));
 };
 
-var urlParam = new URLSearchParams(undefined.props.location.search);
-var token = urlParam.get('token');
-console.log(token);
+var params = new URLSearchParams(window.location.search);
+var foo = params.get('bar');
+console.log(foo);
 Player.propTypes = {
   isPlayerOnly: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.bool,
   onSeeInside: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.func,
