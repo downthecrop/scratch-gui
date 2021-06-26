@@ -36,6 +36,7 @@ class StageHeader extends React.Component {
         return (
             <StageHeaderComponent
                 {...props}
+                showBranding={false}
                 onKeyPress={this.handleKeyPress}
             />
         );

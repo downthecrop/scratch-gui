@@ -1,5 +1,23 @@
 .stage-only {
+    background-color: hsla(0, 100%, 100%, 1);
     width: calc(480px + 1rem);
+}
+
+.stage-header {
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+    margin: auto;
+    justify-content: space-between;
+    -webkit-justify-content: space-between;
+}
+
+.stage-only button{
+    display: none;
+}
+
+.stage {
+    border: 0.1875rem solid rgb(126, 133, 151);
+    border-radius: 0.5rem;
 }
 
 .editor {
