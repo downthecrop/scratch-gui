@@ -73,18 +73,37 @@ let playerDiv = document.querySelectorAll("[class^=player]");
 let headerDiv = document.querySelectorAll("[class^=stage-header]");
 let menuDiv = document.querySelectorAll("[class*=stage-menu-wrapper]");
 let sizeDiv = document.querySelectorAll("[class*=stage-size]");
+let borderDiv = document.querySelectorAll("[class*=stage_stage_]");
 let greenflagDiv = document.querySelectorAll("[class*=green-flag-overlay]");
+let canvas = document.querySelectorAll("canvas");
 
 
-sizeDiv[0].style.display = "none";
-headerDiv[0].style.width = "461px";
-greenflagDiv[0].style.width = "480px";
-document.body.style.margin = "0px";
+//document.body.style.margin = "0px";
+//sizeDiv[0].style.display = "none";
+//headerDiv[0].style.width = "461px";
 
+//its in div.canvas https://i.imgur.com/LnK4tms.png
+
+/**
+borderDiv[0].style.width = "467px"
+borderDiv[0].style.height = "346px";
+
+greenflagDiv[0].style.width = "467px";
+greenflagDiv[0].style.height = "352px";
+*/
 
 //Logo
 if (JSON.parse(params.get('logo'))) {
-    menuDiv[0].innerHTML += '<div style="box-sizing: border-box;"><a href="https://scratch.mit.edu/projects/' + pid + '/" rel="noopener noreferrer" target="_blank"><img style="height: 1.6rem; vertical-align: middle; opacity: .6;" alt="Scratch" src="https://raw.githubusercontent.com/downthecrop/scratch-gui/develop/src/components/menu-bar/scratch-logo.svg"></a></div>';
+    const myDiv = document.createElement("div");
+    const myLink = document.createElement("a");
+    const myLogo = document.createElement("img");
+    myLink.setAttribute("href", "https://scratch.mit.edu/projects/"+pid+"/")
+    
+    myLogo.src = "https://raw.githubusercontent.com/downthecrop/scratch-gui/develop/src/components/menu-bar/scratch-logo.svg"
+    myLogo.style.height = "1.6rem"
+    myLink.appendChild(myLogo)
+    myDiv.appendChild(myLink)
+    menuDiv[0].appendChild(myDiv)
 }
 
 

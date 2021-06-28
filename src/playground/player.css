@@ -8,7 +8,37 @@
     padding-bottom: 0.5rem;
     margin: auto;
     justify-content: space-between;
+    width: 461px;
     -webkit-justify-content: space-between;
+}
+
+canvas {
+    width: 461px !important;
+    height: 346px !important;
+}
+
+.stage-wrapper {
+    position: fixed;
+    top: 2.75rem;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 5000;
+    background-color: hsla(0, 100%, 100%, 1);
+    padding: 0.1875rem;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -webkit-flex-direction: column;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    -ms-flex-align: center;
+    align-items: center;
 }
 
 .stage-only button{
