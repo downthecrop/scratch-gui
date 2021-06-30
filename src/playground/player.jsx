@@ -73,36 +73,51 @@ let playerDiv = document.querySelectorAll("[class^=player]");
 let headerDiv = document.querySelectorAll("[class^=stage-header]");
 let menuDiv = document.querySelectorAll("[class*=stage-menu-wrapper]");
 let sizeDiv = document.querySelectorAll("[class*=stage-size]");
+let canvasWrapper = document.querySelectorAll("[class^=stage-wrapper_stage-canvas-wrapper]");
 let borderDiv = document.querySelectorAll("[class*=stage_stage_]");
 let greenflagDiv = document.querySelectorAll("[class*=green-flag-overlay]");
-let canvas = document.querySelectorAll("canvas");
+
+/** canvasWrapper
+ * .stage-wrapper .stage-canvas-wrapper {
+    display: flex;
+    justify-content: center;
+    width: 476px;
+}
+
+ * 
+ * */
 
 
-//document.body.style.margin = "0px";
-//sizeDiv[0].style.display = "none";
-//headerDiv[0].style.width = "461px";
 
-//its in div.canvas https://i.imgur.com/LnK4tms.png
+document.body.style.margin = "0px";
+sizeDiv[0].style.display = "none";
+headerDiv[0].style.width = "461px";
 
-/**
-borderDiv[0].style.width = "467px"
+
+borderDiv[0].style.width = "461px"
 borderDiv[0].style.height = "346px";
+borderDiv[0].style.borderStyle = "0.1875rem solid rgb(126, 133, 151)"
 
-greenflagDiv[0].style.width = "467px";
-greenflagDiv[0].style.height = "352px";
-*/
+greenflagDiv[0].style.width = "461px";
+greenflagDiv[0].style.height = "346px";
+
 
 //Logo
 if (JSON.parse(params.get('logo'))) {
+    
     const myDiv = document.createElement("div");
     const myLink = document.createElement("a");
     const myLogo = document.createElement("img");
+    
     myLink.setAttribute("href", "https://scratch.mit.edu/projects/"+pid+"/")
     
     myLogo.src = "https://raw.githubusercontent.com/downthecrop/scratch-gui/develop/src/components/menu-bar/scratch-logo.svg"
     myLogo.style.height = "1.6rem"
+    myLogo.style.opacity = "0.7"
+    
     myLink.appendChild(myLogo)
     myDiv.appendChild(myLink)
+
     menuDiv[0].appendChild(myDiv)
 }
 
