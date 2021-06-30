@@ -73,23 +73,9 @@ let playerDiv = document.querySelectorAll("[class^=player]");
 let headerDiv = document.querySelectorAll("[class^=stage-header]");
 let menuDiv = document.querySelectorAll("[class*=stage-menu-wrapper]");
 let sizeDiv = document.querySelectorAll("[class*=stage-size]");
-let canvasWrapper = document.querySelectorAll("[class^=stage-wrapper_stage-canvas-wrapper]");
 let borderDiv = document.querySelectorAll("[class*=stage_stage_]");
 let greenflagDiv = document.querySelectorAll("[class*=green-flag-overlay]");
 
-/** canvasWrapper
- * .stage-wrapper .stage-canvas-wrapper {
-    display: flex;
-    justify-content: center;
-    width: 476px;
-}
-
- * 
- * */
-
-
-
-document.body.style.margin = "0px";
 sizeDiv[0].style.display = "none";
 headerDiv[0].style.width = "461px";
 
@@ -110,6 +96,7 @@ if (JSON.parse(params.get('logo'))) {
     const myLogo = document.createElement("img");
     
     myLink.setAttribute("href", "https://scratch.mit.edu/projects/"+pid+"/")
+    myLink.setAttribute("target", "_blank")
     
     myLogo.src = "https://raw.githubusercontent.com/downthecrop/scratch-gui/develop/src/components/menu-bar/scratch-logo.svg"
     myLogo.style.height = "1.6rem"
@@ -127,8 +114,10 @@ let bg = params.get('bg')
 
 if (bg && isValidColor(bg)) {
     playerDiv[0].style.backgroundColor = "#" + bg;
+    document.body.style.backgroundColor = "#" + bg;
 } else if (bg) {
     playerDiv[0].style.backgroundColor = bg;
+    document.body.style.backgroundColor = bg;
 }
 
 //Paddings

@@ -11,6 +11,11 @@
     -webkit-justify-content: space-between;
 }
 
+body{
+    margin-top: 0px !important;
+    background-color: white;
+}
+
 canvas {
     width: 461px !important;
     height: 346px !important;
