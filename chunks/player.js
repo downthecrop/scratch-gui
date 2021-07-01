@@ -13,12 +13,17 @@ exports = module.exports = __webpack_require__(/*! ../../node_modules/css-loader
 
 
 // module
-exports.push([module.i, ".player_stage-only_3sowo {\n    background-color: black;\n    width: calc(480px + 1rem);\n}\n\n.player_stage-only_3sowo button{\n    display: none;\n}\n\n.player_editor_pHkoy {\n    position: absolute;\n    top: 0;\n    left: 0;\n    height: 100%;\n    width: 100%;\n}\n\n.player_stage-only_3sowo * {\n    -webkit-box-sizing: border-box;\n            box-sizing: border-box;\n}\n", ""]);
+exports.push([module.i, ".player_stage-only_3sowo {\n    background-color: hsla(0, 100%, 100%, 1);\n    width: calc(480px + 1rem);\n}\n\n.player_stage-header_122HM {\n    padding-top: 0.5rem;\n    padding-bottom: 0.5rem;\n    margin: auto;\n    -webkit-box-pack: justify;\n        -ms-flex-pack: justify;\n            justify-content: space-between;\n    -webkit-justify-content: space-between;\n}\n\nbody{\n    margin-top: 0px !important;\n    background-color: white;\n}\n\ncanvas {\n    width: 461px !important;\n    height: 346px !important;\n}\n\n.player_stage-wrapper_3S-WN {\n    position: fixed;\n    top: 2.75rem;\n    left: 0;\n    right: 0;\n    bottom: 0;\n    z-index: 5000;\n    background-color: hsla(0, 100%, 100%, 1);\n    padding: 0.1875rem;\n    display: -webkit-box;\n    display: -webkit-flex;\n    display: -ms-flexbox;\n    display: flex;\n    -webkit-box-orient: vertical;\n    -webkit-box-direction: normal;\n    -webkit-flex-direction: column;\n    -ms-flex-direction: column;\n    flex-direction: column;\n    -webkit-box-align: center;\n    -webkit-align-items: center;\n    -ms-flex-align: center;\n    align-items: center;\n}\n\n.player_stage-only_3sowo button{\n    display: none;\n}\n\n.player_stage_3xRzh {\n    border: 0.1875rem solid rgb(126, 133, 151);\n    border-radius: 0.5rem;\n}\n\n.player_editor_pHkoy {\n    position: absolute;\n    top: 0;\n    left: 0;\n    height: 100%;\n    width: 100%;\n}\n\n.player_stage-only_3sowo * {\n    -webkit-box-sizing: border-box;\n            box-sizing: border-box;\n}\n", ""]);
 
 // exports
 exports.locals = {
 	"stage-only": "player_stage-only_3sowo",
 	"stageOnly": "player_stage-only_3sowo",
+	"stage-header": "player_stage-header_122HM",
+	"stageHeader": "player_stage-header_122HM",
+	"stage-wrapper": "player_stage-wrapper_3S-WN",
+	"stageWrapper": "player_stage-wrapper_3S-WN",
+	"stage": "player_stage_3xRzh",
 	"editor": "player_editor_pHkoy"
 };
 
@@ -114,9 +119,6 @@ var Player = function Player(_ref) {
   }));
 };
 
-var params = new URLSearchParams(window.location.search);
-var foo = params.get('bar');
-console.log(foo);
 Player.propTypes = {
   isPlayerOnly: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.bool,
   onSeeInside: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.func,
@@ -146,7 +148,66 @@ var appTarget = document.createElement('div');
 document.body.appendChild(appTarget);
 react_dom__WEBPACK_IMPORTED_MODULE_3___default.a.render( /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(WrappedPlayer, {
   isPlayerOnly: true
-}), appTarget);
+}), appTarget); //Customizer
+
+function isValidColor(str) {
+  return str.match(/[a-f0-9]{6}$/i) !== null;
+}
+
+var params = new URLSearchParams(window.location.search);
+var pid = window.location.hash.substring(1);
+var playerDiv = document.querySelectorAll("[class^=player]");
+var headerDiv = document.querySelectorAll("[class^=stage-header]");
+var menuDiv = document.querySelectorAll("[class*=stage-menu-wrapper]");
+var sizeDiv = document.querySelectorAll("[class*=stage-size]");
+var borderDiv = document.querySelectorAll("[class*=stage_stage_]");
+var greenflagDiv = document.querySelectorAll("[class*=green-flag-overlay]");
+sizeDiv[0].style.display = "none";
+headerDiv[0].style.width = "461px";
+borderDiv[0].style.width = "461px";
+borderDiv[0].style.height = "346px";
+borderDiv[0].style.borderStyle = "0.1875rem solid rgb(126, 133, 151)";
+greenflagDiv[0].style.width = "461px";
+greenflagDiv[0].style.height = "346px"; //Logo
+
+if (JSON.parse(params.get('logo'))) {
+  var myDiv = document.createElement("div");
+  var myLink = document.createElement("a");
+  var myLogo = document.createElement("img");
+  myLink.setAttribute("href", "https://scratch.mit.edu/projects/" + pid + "/");
+  myLink.setAttribute("target", "_blank");
+  myLogo.src = "https://raw.githubusercontent.com/downthecrop/scratch-gui/develop/src/components/menu-bar/scratch-logo.svg";
+  myLogo.style.height = "1.6rem";
+  myLogo.style.opacity = "0.7";
+  myLink.appendChild(myLogo);
+  myDiv.appendChild(myLink);
+  menuDiv[0].appendChild(myDiv);
+} //Background color
+
+
+var bg = params.get('bg');
+
+if (bg && isValidColor(bg)) {
+  playerDiv[0].style.backgroundColor = "#" + bg;
+  document.body.style.backgroundColor = "#" + bg;
+} else if (bg) {
+  playerDiv[0].style.backgroundColor = bg;
+  document.body.style.backgroundColor = bg;
+} //Paddings
+
+
+var padding = params.get('padding');
+
+if (padding) {
+  playerDiv[0].style.padding = padding;
+} else {
+  playerDiv[0].style.padding = "0.1875rem";
+} //Header display
+
+
+if (JSON.parse(params.get('header'))) {
+  headerDiv[0].style.display = "none";
+}
 
 /***/ })
 
