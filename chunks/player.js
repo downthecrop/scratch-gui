@@ -155,18 +155,20 @@ function isValidColor(str) {
 }
 
 var params = new URLSearchParams(window.location.search);
-var pid = window.location.hash.substring(1);
+var pid = window.location.hash.substring(1); //Get DOM elements
+
 var playerDiv = document.querySelectorAll("[class^=player]");
 var headerDiv = document.querySelectorAll("[class^=stage-header]");
 var menuDiv = document.querySelectorAll("[class*=stage-menu-wrapper]");
 var sizeDiv = document.querySelectorAll("[class*=stage-size]");
 var borderDiv = document.querySelectorAll("[class*=stage_stage_]");
 var greenflagDiv = document.querySelectorAll("[class*=green-flag-overlay]");
+document.body.style.marginLeft = "6px";
 sizeDiv[0].style.display = "none";
 headerDiv[0].style.width = "461px";
 borderDiv[0].style.width = "461px";
 borderDiv[0].style.height = "346px";
-borderDiv[0].style.borderStyle = "0.1875rem solid rgb(126, 133, 151)";
+borderDiv[0].style.border = "0.1875rem solid rgb(126, 133, 151)";
 greenflagDiv[0].style.width = "461px";
 greenflagDiv[0].style.height = "346px"; //Logo
 
