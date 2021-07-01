@@ -69,6 +69,7 @@ function isValidColor(str) { return str.match(/[a-f0-9]{6}$/i) !== null; }
 const params = new URLSearchParams(window.location.search);
 const pid = window.location.hash.substring(1);
 
+//Get DOM elements
 let playerDiv = document.querySelectorAll("[class^=player]");
 let headerDiv = document.querySelectorAll("[class^=stage-header]");
 let menuDiv = document.querySelectorAll("[class*=stage-menu-wrapper]");
@@ -76,13 +77,14 @@ let sizeDiv = document.querySelectorAll("[class*=stage-size]");
 let borderDiv = document.querySelectorAll("[class*=stage_stage_]");
 let greenflagDiv = document.querySelectorAll("[class*=green-flag-overlay]");
 
+document.body.style.marginLeft = "6px";
 sizeDiv[0].style.display = "none";
 headerDiv[0].style.width = "461px";
 
 
 borderDiv[0].style.width = "461px"
 borderDiv[0].style.height = "346px";
-borderDiv[0].style.borderStyle = "0.1875rem solid rgb(126, 133, 151)"
+borderDiv[0].style.border = "0.1875rem solid rgb(126, 133, 151)"
 
 greenflagDiv[0].style.width = "461px";
 greenflagDiv[0].style.height = "346px";
@@ -90,18 +92,18 @@ greenflagDiv[0].style.height = "346px";
 
 //Logo
 if (JSON.parse(params.get('logo'))) {
-    
+
     const myDiv = document.createElement("div");
     const myLink = document.createElement("a");
     const myLogo = document.createElement("img");
-    
-    myLink.setAttribute("href", "https://scratch.mit.edu/projects/"+pid+"/")
+
+    myLink.setAttribute("href", "https://scratch.mit.edu/projects/" + pid + "/")
     myLink.setAttribute("target", "_blank")
-    
+
     myLogo.src = "https://raw.githubusercontent.com/downthecrop/scratch-gui/develop/src/components/menu-bar/scratch-logo.svg"
     myLogo.style.height = "1.6rem"
     myLogo.style.opacity = "0.7"
-    
+
     myLink.appendChild(myLogo)
     myDiv.appendChild(myLink)
 
