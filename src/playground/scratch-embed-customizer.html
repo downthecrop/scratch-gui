@@ -1,26 +1,42 @@
 <html>
-    <head>
-        <title>Scratch Embed Customizer</title>
-    </head>
-    <body>
-        <center>
-            <h1>Scratch Embed Customizer</h1>
-            <h2>Customize CSS, Background Color, Title Bar, Rounded Corners and More!</h2>
-            <br>
-            <table>
-                <td align="right" style="vertical-align: top; padding-top: 10px;">
-                    Project ID: <input></input><br>
-                    Logo: <input></input><br>
-                    Header Bar: <input></input><br>
-                    Background Color: <input></input><br>
-                    Border: <input></input><br>
-                    Border Color: <input></input><br>
-                    Border Width: <input></input><br>
-                </td>
-                <td>
-                    <iframe src="https://downthecrop.github.io/scratch-gui/player.html#543772123" allowtransparency="true" width="482" height="482" frameborder="0" scrolling="no" allowfullscreen="false"></iframe>
-                </td>
-            </table>
+
+<head>
+    <title>Scratch Embed Customizer</title>
+</head>
+
+<body>
+    <center>
+        <h1>Scratch Embed Customizer</h1>
+        <h2>Customize CSS, Background Color, Title Bar, Rounded Corners and More!</h2>
+        <br>
+        <table>
+            <td align="right" style="vertical-align: top; padding-top: 10px;">
+                Project ID: <input></input><br>
+                Logo: <input></input><br>
+                Header Bar: <input></input><br>
+                Background Color: <input></input><br>
+                Border: <input></input><br>
+                Border Color: <input></input><br>
+                Border Width: <input></input><br>
+            </td>
+            <td>
+                        <iframe id="cdcd" src="embed.html" allowtransparency="true" width="482px" height="410px"
+                            frameborder="0" scrolling="no" allowfullscreen="false"></iframe>
+            </td>
+        </table>
     </center>
-    </body>
+</body>
+
+<script>
+    // sleep time expects milliseconds
+    function sleep(time) {
+        return new Promise((resolve) => setTimeout(resolve, time));
+    }
+
+    // Usage!
+    sleep(5000).then(() => {
+        document.getElementById('cdcd').contentWindow.postMessage("https://stackoverflow.com/questions/951021/what-is-the-javascript-version-of-sleep", window.location.href)
+    });
+</script>
+
 </html>

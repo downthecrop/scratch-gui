@@ -1,0 +1,43 @@
+<style>
+    #pop {
+        display: none;
+        z-index: 99;
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 100%;
+        height: 100%;
+        background-color: black;
+        opacity: .5;
+    }
+    #info {
+        padding-top:62px;
+        text-align: center;
+        z-index: 99999;
+        color:white;
+        opacity: 1;
+    }
+</style>
+
+<body style="margin:0px">
+    <div id="pop">
+        <div id="info">
+            <h1>Click to Load Changes</h1>
+            <svg width="200" height="200" xmlns="http://www.w3.org/2000/svg">
+                <g>
+                 <title>Layer 1</title>
+                 <path stroke="null" d="m172.788,85.32675c-4.03425,37.19925 -35.5245,66.17325 -73.788,66.17325c-22.2585,0 -42.174,-9.8505 -55.79475,-25.36875l10.27125,-13.47225c10.58475,13.57125 27.027,22.341 45.5235,22.341c29.0895,0 53.163,-21.648 57.11475,-49.67325l-24.11475,0l33,-43.3125l33,43.3125l-25.212,0zm-130.878,-16.32675c4.01775,-27.94275 28.05,-49.5 57.09,-49.5c18.45525,0 34.881,8.73675 45.4575,22.2585l10.263,-13.464c-13.6125,-15.477 -33.50325,-25.2945 -55.7205,-25.2945c-38.214,0 -69.65475,28.88325 -73.76325,66l-25.23675,0l33,43.3125l33,-43.3125l-24.09,0z" id="svg_1" fill="#ffffff"/>
+                </g>
+               </svg>
+        </div>
+    </div>
+    <iframe id="overlay" src="https://downthecrop.github.io/scratch-gui/player.html#543772123" allowtransparency="true"
+        width="482" height="482" frameborder="0" scrolling="no" allowfullscreen="false"></iframe>
+    <script>
+        window.addEventListener('message', message => {
+            document.getElementById("pop").style.display = "block"
+            document.getElementById("pop").addEventListener("click", function(){
+                console.log(message.data)
+            })
+        })
+    </script>
