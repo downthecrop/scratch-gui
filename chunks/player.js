@@ -154,6 +154,14 @@ function isValidColor(str) {
   return str.match(/[a-f0-9]{6}$/i) !== null;
 }
 
+function trueFalse(str) {
+  if (str === "True") {
+    return true;
+  }
+
+  return false;
+}
+
 var params = new URLSearchParams(window.location.search);
 var pid = window.location.hash.substring(1); //Get DOM elements
 
@@ -172,7 +180,7 @@ borderDiv[0].style.border = "0.1875rem solid rgb(126, 133, 151)";
 greenflagDiv[0].style.width = "461px";
 greenflagDiv[0].style.height = "346px"; //Logo
 
-if (JSON.parse(params.get('logo'))) {
+if (trueFalse(params.get('logo'))) {
   var myDiv = document.createElement("div");
   var myLink = document.createElement("a");
   var myLogo = document.createElement("img");
@@ -207,7 +215,7 @@ if (padding) {
 } //Header display
 
 
-if (JSON.parse(params.get('header'))) {
+if (trueFalse(params.get('header'))) {
   headerDiv[0].style.display = "none";
 }
 
