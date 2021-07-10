@@ -215,7 +215,7 @@ if (padding) {
 } //Header display
 
 
-if (trueFalse(params.get('header'))) {
+if (!trueFalse(params.get('header'))) {
   headerDiv[0].style.display = "none";
 }
 
