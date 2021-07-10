@@ -148,7 +148,10 @@ var appTarget = document.createElement('div');
 document.body.appendChild(appTarget);
 react_dom__WEBPACK_IMPORTED_MODULE_3___default.a.render( /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(WrappedPlayer, {
   isPlayerOnly: true
-}), appTarget); //Customizer
+}), appTarget);
+var AudioContext = window.AudioContext || window.webkitAudioContext;
+var audioContext = new AudioContext();
+audioContext.suspend(); //Customizer
 
 function isValidColor(str) {
   return str.match(/[a-f0-9]{6}$/i) !== null;
@@ -178,7 +181,10 @@ borderDiv[0].style.width = "461px";
 borderDiv[0].style.height = "346px";
 borderDiv[0].style.border = "0.1875rem solid rgb(126, 133, 151)";
 greenflagDiv[0].style.width = "461px";
-greenflagDiv[0].style.height = "346px"; //Logo
+greenflagDiv[0].style.height = "346px";
+greenflagDiv[0].addEventListener("click", function () {
+  audioContext.resume();
+}); //Logo
 
 if (trueFalse(params.get('logo'))) {
   var myDiv = document.createElement("div");
