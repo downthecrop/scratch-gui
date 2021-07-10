@@ -177,8 +177,8 @@ headerDiv[0].style.width = "461px";
 borderDiv[0].style.width = "461px";
 borderDiv[0].style.height = "346px";
 borderDiv[0].style.border = "0.1875rem solid rgb(126, 133, 151)";
-greenflagDiv[0].style.width = "463px";
-greenflagDiv[0].style.height = "348px"; //Logo
+greenflagDiv[0].style.width = "468px";
+greenflagDiv[0].style.height = "352px"; //Logo
 
 if (trueFalse(params.get('logo'))) {
   var myDiv = document.createElement("div");
