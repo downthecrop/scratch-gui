@@ -212,6 +212,13 @@ if (padding) {
   playerDiv[0].style.padding = padding;
 } else {
   playerDiv[0].style.padding = "0.1875rem";
+} //Border
+
+
+var border = params.get('border');
+
+if (!trueFalse(border)) {
+  borderDiv[0].style.border = "";
 } //Header display
 
 
