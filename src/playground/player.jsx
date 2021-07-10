@@ -66,6 +66,12 @@ ReactDOM.render(<WrappedPlayer isPlayerOnly />, appTarget);
 //Customizer
 
 function isValidColor(str) { return str.match(/[a-f0-9]{6}$/i) !== null; }
+function trueFalse(str) { 
+    if (str === "True"){
+        return true
+    }
+    return false
+}
 const params = new URLSearchParams(window.location.search);
 const pid = window.location.hash.substring(1);
 
@@ -86,12 +92,12 @@ borderDiv[0].style.width = "461px"
 borderDiv[0].style.height = "346px";
 borderDiv[0].style.border = "0.1875rem solid rgb(126, 133, 151)"
 
-greenflagDiv[0].style.width = "461px";
-greenflagDiv[0].style.height = "346px";
+greenflagDiv[0].style.width = "468px";
+greenflagDiv[0].style.height = "352px";
 
 
 //Logo
-if (JSON.parse(params.get('logo'))) {
+if (trueFalse(params.get('logo'))) {
 
     const myDiv = document.createElement("div");
     const myLink = document.createElement("a");
@@ -132,7 +138,7 @@ if (padding) {
 }
 
 //Header display
-if (JSON.parse(params.get('header'))) {
+if (!trueFalse(params.get('header'))) {
     headerDiv[0].style.display = "none";
 }
 

@@ -2,6 +2,15 @@
 
 <head>
     <title>Scratch Embed Customizer</title>
+    <style>
+        select {
+            width: 10em;
+        }
+
+        input {
+            width: 10em;
+        }
+    </style>
 </head>
 
 <body>
@@ -12,31 +21,84 @@
         <table>
             <td align="right" style="vertical-align: top; padding-top: 10px;">
                 Project ID: <input></input><br>
-                Logo: <input></input><br>
-                Header Bar: <input></input><br>
-                Background Color: <input></input><br>
-                Border: <input></input><br>
+                Logo: <select id="logo">
+                    <opiton></opiton>
+                    <option>True</option>
+                    <option>False</option>
+                </select>
+                <br>
+                Header Bar: <select id="header-bar">
+                    <opiton></opiton>
+                    <option>True</option>
+                    <option>False</option>
+                </select>
+                <br>
+                Border: <select id="border">
+                    <opiton></opiton>
+                    <option>True</option>
+                    <option>False</option>
+                </select>
+                <br>
+                Background Color <a href="https://htmlcolorcodes.com/" target="_new">(HEX)</a> : <input></input><br>
                 Border Color: <input></input><br>
                 Border Width: <input></input><br>
             </td>
             <td>
-                        <iframe id="cdcd" src="embed.html" allowtransparency="true" width="482px" height="410px"
-                            frameborder="0" scrolling="no" allowfullscreen="false"></iframe>
+                <div id="container">
+                    <iframe id="cdcd"
+                        src="https://downthecrop.github.io/scratch-gui/player.html?header=True&logo=True#552134134"
+                        allowtransparency="true" width="482px" height="410px" frameborder="0" scrolling="no"
+                        allowfullscreen="false"></iframe>
+                </div>
             </td>
         </table>
     </center>
 </body>
 
 <script>
-    // sleep time expects milliseconds
-    function sleep(time) {
-        return new Promise((resolve) => setTimeout(resolve, time));
+    var byId = function (id) { return document.getElementById(id); };
+
+    let projectId, logo, bg, border, header
+    function buildLink() {
+        for (i in document.getElementsByTagName("input")) {
+            if (Number.isInteger(parseInt(i))) {
+                let val = document.getElementsByTagName("input")[i].value
+                console.log(i)
+                switch (parseInt(i)) {
+                    case 0:
+                        projectId = val
+                        break;
+                    case 90:
+                        logo = val
+                        break;
+                    case 1:
+                        bg = val.replace("#", "")
+                        break;
+                    case 2:
+                        border = val
+                        break;
+                    case 3:
+                        header = val
+                        break;
+                }
+            }
+        }
+        let params = "?bg=" + bg + "&logo=" + byId("logo").value + "&border=" + byId("border").value + "&header=" + byId("header-bar").value + "#" + projectId
+        console.log(params)
+        return params
     }
 
-    // Usage!
-    sleep(5000).then(() => {
-        document.getElementById('cdcd').contentWindow.postMessage("https://stackoverflow.com/questions/951021/what-is-the-javascript-version-of-sleep", window.location.href)
-    });
+    for (i in document.getElementsByTagName("input")) {
+        if (Number.isInteger(parseInt(i))) {
+            document.getElementsByTagName("input")[i].addEventListener("keyup", function (e) {
+                byId("container").innerHTML = "<div style='text-align:center;width:482px;height:410px;background-color:black;color:white;'><h1>Click to update</h1></div>"
+                let url = buildLink()
+                byId("container").addEventListener("click", function (e) {
+                    byId("container").innerHTML = '<iframe id="cdcd" src="https://downthecrop.github.io/scratch-gui/player.html' + url + '" allowtransparency="true" width="482px" height="410px" frameborder="0" scrolling="no" allowfullscreen="false"></iframe>'
+                })
+            })
+        }
+    }
 </script>
 
 </html>
